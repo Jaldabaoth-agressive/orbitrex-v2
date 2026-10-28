@@ -584,7 +584,7 @@ function paintTop() {
   const m = met(), n = nAct();
   const topEl = $('#top');
   if (topEl) {
-    topEl.innerHTML = `<b>${esc(cfg.sat)}</b><span title="Application clock (browser UTC) — not telemetry time">APP UTC <b>${iso().slice(0, 19).replace('T', ' ')}</b></span>${m ? `<span title="Mission elapsed time from configured start">MET <b>${m}</b></span>` : ''}<span>SOURCE ${chip(srcName())}</span><span>LINK ${chip(conn())}</span><span title="Timestamp carried inside the latest valid packet">LAST PACKET <b>${last ? last.timestamp.slice(0, 23) + 'Z' : 'none'}</b></span><span>ALERTS <b class="${n ? 'cr' : ''}">${n}</b></span>`;
+    topEl.innerHTML = `<b>${esc(cfg.sat)}</b><span title="Application clock (browser UTC) — not telemetry time">APP UTC <b>${iso().slice(0, 19).replace('T', ' ')}</b></span>${m ? `<span title="Mission elapsed time from configured start">MET <b>${m}</b></span>` : ''}<span>SOURCE ${chip(srcName())}</span><span>LINK ${chip(conn())}</span><span title="Timestamp carried inside the latest valid packet">LAST PACKET <b>${last ? last.timestamp.slice(0, 23) + 'Z' : 'none'}</b></span><span>ALERTS <b class="${n ? 'cr' : ''}">${n}</b></span><a href="/orbitrex-groundstation.zip" download="orbitrex-groundstation.zip" class="ch ok" style="text-decoration:none;margin-left:auto;cursor:pointer" title="Download standalone native bundle for Windows/Mac">📦 Download ZIP</a>`;
   }
   const bnEl = $('#bn');
   if (bnEl) {
@@ -828,6 +828,24 @@ let copiedPkg = false;
 
 const bridgeView = () => `<h2>ESP-NOW Bridge &amp; Backend Code</h2>
 <p class="mu">Everything you need to flash the 2nd ESP32 and run the Node.js ingestion backend on your ground computer.</p>
+
+<div class="card ok" style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+  <div>
+    <b>📦 Complete Standalone Ground Station Package (.ZIP)</b>
+    <div class="mu">Includes <code>server.js</code>, <code>package.json</code>, <code>run.bat</code> (Windows), <code>run.sh</code> (Mac/Linux), <code>public/index.html</code>, and ESP32 Arduino code.</div>
+  </div>
+  <a href="/orbitrex-groundstation.zip" download="orbitrex-groundstation.zip" style="text-decoration:none;background:var(--ok);color:#04080f;font-weight:bold;padding:7px 14px;border-radius:6px;display:inline-block">⬇ Download ZIP Bundle</a>
+</div>
+
+<div class="card wa" style="margin-bottom:14px">
+  <b>⚠️ Windows Notice: "Could not find the item"</b>
+  <div class="mu" style="margin-top:4px">
+    If Windows shows <i>"Could not find this item. This is no longer located in..."</i> when clicking files:
+    <br>1. <b>Right-click</b> the downloaded ZIP file in your Downloads folder.
+    <br>2. Select <b>"Extract All..."</b> and click <b>Extract</b>.
+    <br>3. Open the extracted folder, then double-click <code>run.bat</code> or open <code>public/index.html</code>!
+  </div>
+</div>
 
 <div class="row">
   <button data-act="copyBridge">${copiedBridge ? '✓ Copied Arduino Code!' : '📋 Copy ESP32 Bridge (.ino)'}</button>

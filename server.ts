@@ -355,6 +355,17 @@ app.get('/api/arduino/code', (req: Request, res: Response) => {
   return res.status(404).json({ error: 'Arduino code file not found' });
 });
 
+// 9b. Serve Ground Station Standalone ZIP Bundle
+app.get('/orbitrex-groundstation.zip', (req: Request, res: Response) => {
+  const zipPath = path.join(process.cwd(), 'public', 'orbitrex-groundstation.zip');
+  if (fs.existsSync(zipPath)) {
+    res.setHeader('Content-Type', 'application/zip');
+    res.setHeader('Content-Disposition', 'attachment; filename="orbitrex-groundstation.zip"');
+    return res.sendFile(zipPath);
+  }
+  return res.status(404).json({ error: 'ZIP bundle not found' });
+});
+
 // 10. Serve the integrated ORBITREX Mission Control directly
 app.get('/orbitrex', (req: Request, res: Response) => {
   const orbitrexPath = path.join(process.cwd(), 'public', 'orbitrex.html');
