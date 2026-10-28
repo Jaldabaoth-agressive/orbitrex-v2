@@ -1,0 +1,6 @@
+{
+  "name": "ORBITREX CubeSat Ground Station",
+  "description": "Real-time Node.js and WebSocket telemetry ingestion server, ESP-NOW serial bridge, and mission control ground station dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
